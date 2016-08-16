@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+
+  <head>
+  	<title>The Feline-al Frontier</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  	<script src="jquery.js"></script>
+  	<script src="scripts.js"></script>
+
+  	<style>
+
+			body {
+			    font-family: "courier", Georgia, Serif;
+			}
+
+			.div-table{
+			  display:table;         
+			  /* width:auto;   */      
+			  /* background-color:#eee;       */  
+			  /* border:1px solid  #666666;    */     
+			  border-spacing:5px;/*cellspacing:poor IE support for  this*/
+			}
+			.div-table-row{
+			  display:table-row;
+			  width:auto;
+			  clear:both;
+			}
+			.div-table-col1{
+			  float:left;/*fix for  buggy browsers*/
+			  display:table-column;         
+			  width:120px;         
+			  /* background-color:#ccc;  */
+			}
+      .div-table-col2{
+        float:left;/*fix for  buggy browsers*/
+        display:table-column;         
+		    width: -moz-calc(100% - 120px);
+		    width: -webkit-calc(100% - 120px);
+		    width: calc(100% - 120px);
+        /* background-color:#ccc;  */
+      }
+
+      /* Styles for location selects*/
+      .green   { background-color: green; color: white; }
+      .yellow {background-color: yellow;}
+      .white {background-color: transparent;}
+
+  	</style>
+  </head>
+
+  <body>
+
+  	<!-- Heading information -->
+  	<h1>The Felinal Frontier</h1>
+
+  	<button id="ainst">Toggle instructions</button>
+
+  	<div id="instructions" style="display: none;">
+  	<p>
+  		Note: this game was designed to be a low-tech game that can be played
+  		on a sheet of paper with a simple random number generator. You can use
+  		a stopwatch in real life with the lap functionality. If a stopwatch is
+  		not available, one can use dice, coins, etc... For a stopwatch, find
+  		the hundredths on a split, and 0/1 is computer damage, 2/3 is reactor,
+  		etc... The damage can be found by the number of tenths away from your
+  		desired boost time. Make the game your own. It was designed to be a way to
+  		kill time with friends. Extend it as you will.
+		</p>
+  	<p>
+  		You command a crew of kittens aboard the USS Catnip. You are hauling
+  		10 tonnes of catnip. Unforutnately, you have fallen into
+  		a hostile swarm of space rats that want to see your demise. Your goal
+  		is to survive as long as possible. (Note: in the real life version,
+  		if you're in a car or at a restaurant, you are awaiting rescue in the
+  		form of arriving at your destination or getting your food.)
+  	</p>
+  	<p>
+  		There are 5 key systems on your ship: computers banks, nuclear reactor,
+  		engines, space rat evasion system, and the power cable network. Your ship
+  		needs to boost periodically. On pen and paper, this should be once per
+  		60 seconds. Everytime your ship boosts, there is a possibility that one
+  		of the key systems might break, and will need repair.
+  	</p>
+  	<p>
+  		Each system can be repaired by a kitten. Kittens can repair a default of
+  		2 damage, but specialists in an area can repair 3. It takes a full boost
+  		period for a kitten to arrive at a location on the ship, so choose wisely.
+  	</p>
+  	<p>
+  		If a system becomes too damaged, systems the rely on it will also become
+  		damaged. For example, if the reactor breaks down (default 4+ damage),
+  		then the engines will also begin to break down. If the rat evasion system
+  		breaks, then rats will get into power cables and chew them apart.
+  	</p>
+  	<p>
+  		Additionally, if a system suffers significant damage (default 8+ damage),
+  		then it will ruin some of your catnip. If all of your catnip gets ruined,
+  		you lose.
+  	</p>
+  	</div>
+
+  	<h2 id="javascript-warning">
+  		Warning: If you are seeing this, it is because you haven't enabled
+  		javascript which is needed for running this program
+  	</h2>
+
+  	<div id = "dashboard">
+
+  	  	<h2>Catnip <span id="catnip"></s></h2>
+  	  
+
+
+  	<h2>Systems</h2>
+
+  	  <div class="div-table" id="systems">
+        <div class="div-table-row">
+          <div class="div-table-col1">System</div>
+          <div class="div-table-col2">Damage</div>
+        </div>
+        <div class="div-table-row" id="computer">
+          <div class="div-table-col1">Computer</div>
+          <div class="div-table-col2"></div>
+        </div>
+        <div class="div-table-row" id="reactor">
+          <div class="div-table-col1">Reactor</div>
+          <div class="div-table-col2"></div>
+        </div>
+        <div class="div-table-row" id="engine">
+          <div class="div-table-col1">Engine</div>
+          <div class="div-table-col2"></div>
+        </div>
+        <div class="div-table-row" id="space-rats">
+          <div class="div-table-col1">Rat Evasion</div>
+          <div class="div-table-col2"></div>
+        </div>
+        <div class="div-table-row" id="power-cables">
+          <div class="div-table-col1">Power Cables</div>
+          <div class="div-table-col2"></div>
+        </div>
+      </div>
+
+  	<h2>Crew</h2>
+
+  	  <div id="crew">
+      </div>
+      <button id="add-crew-button">Add Crew</button>
+      <button id="start-button">Start</button>
+
+   	  <p id="flight-time">Flight time: <span></span></p>
+  	  <p id="time-to-next-boost">Time to next boost: <span></span></p>
+  	  <button disabled id="boost-button">BOOST!</button>
+
+    <h2>Log</h2>
+    	<ul id="boost-history-list">
+    	</ul>
+
+	</div> <!-- /dashboard -->
+  </body>
+
+</html>
+
+
